@@ -3,7 +3,10 @@ name: Daily Commit
 on:
   schedule:
     - cron: '30 3 * * *'
-  workflow_dispatch: # optional: allows manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write  # 👈 required for push
 
 jobs:
   auto-commit:
@@ -25,3 +28,4 @@ jobs:
         run: |
           echo "Last commit:"
           git log -1 --pretty=oneline
+
